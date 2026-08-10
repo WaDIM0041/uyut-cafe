@@ -6,16 +6,16 @@
       <stop offset="1" stop-color="#0e0a07"/>
     </linearGradient>
     <radialGradient id="glow1" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#f5c37a" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#f5c37a" stop-opacity="0"/>
+      <stop offset="0" stop-color="#f6ab6b" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f6ab6b" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="glow2" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#ffd9a0" stop-opacity="0.35"/>
-      <stop offset="1" stop-color="#ffd9a0" stop-opacity="0"/>
+      <stop offset="0" stop-color="#fbc58f" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#fbc58f" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="lamp" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#ffe9c4" stop-opacity="0.95"/>
-      <stop offset="1" stop-color="#ffe9c4" stop-opacity="0"/>
+      <stop offset="0" stop-color="#ffedcf" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#ffedcf" stop-opacity="0"/>
     </radialGradient>
     <filter id="blur">
       <feGaussianBlur stdDeviation="28"/>
@@ -41,14 +41,14 @@
   <ellipse cx="1320" cy="520" rx="180" ry="70" fill="#ffdf9e" opacity="0.16" filter="url(#blur)"/>
   <rect x="900" y="440" width="46" height="30" rx="8" fill="#5a3a1e"/>
   <rect x="1590" y="440" width="46" height="30" rx="8" fill="#5a3a1e"/>
-  <path d="M900 440 q23 -70 46 0 Z" fill="#f5c37a" opacity="0.55"/>
-  <path d="M1590 440 q23 -70 46 0 Z" fill="#f5c37a" opacity="0.55"/>
+  <path d="M900 440 q23 -70 46 0 Z" fill="#f6ab6b" opacity="0.55"/>
+  <path d="M1590 440 q23 -70 46 0 Z" fill="#f6ab6b" opacity="0.55"/>
   <ellipse cx="923" cy="430" rx="26" ry="60" fill="url(#lamp)" filter="url(#blur)"/>
   <ellipse cx="1613" cy="430" rx="26" ry="60" fill="url(#lamp)" filter="url(#blur)" opacity="0.8"/>
   <rect x="760" y="620" width="420" height="300" rx="8" fill="#221610" stroke="#3a2a1a" stroke-width="3"/>
   <rect x="760" y="800" width="420" height="120" fill="#1a100b"/>
-  <ellipse cx="970" cy="760" rx="90" ry="60" fill="#ffd9a0" opacity="0.14" filter="url(#blur)"/>
+  <ellipse cx="970" cy="760" rx="90" ry="60" fill="#fbc58f" opacity="0.14" filter="url(#blur)"/>
   <rect x="1280" y="650" width="400" height="270" rx="8" fill="#221610" stroke="#3a2a1a" stroke-width="3"/>
-  <ellipse cx="1480" cy="770" rx="80" ry="55" fill="#ffd9a0" opacity="0.12" filter="url(#blur)"/>
+  <ellipse cx="1480" cy="770" rx="80" ry="55" fill="#fbc58f" opacity="0.12" filter="url(#blur)"/>
   <path d="M0 960 Q 480 900 960 960 T 1920 950 L 1920 1080 L 0 1080 Z" fill="#0e0a07"/>
 </svg>
