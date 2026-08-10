@@ -221,6 +221,118 @@ renderTabs();
 renderMenu(activeCat);
 
 // ============================================================
+// ВИТРИНА ВКУСА — «липкий взгляд»: блюдо следует за курсором
+// ============================================================
+const scStage = $("#showcase-stage");
+const scCard = $("#showcase-card");
+const scImg = $("#showcase-img");
+const scBadge = $("#showcase-badge");
+const scCatLbl = $("#showcase-cat");
+const scName = $("#showcase-name");
+const scDesc = $("#showcase-desc");
+const scStory = $("#showcase-story");
+const scWeight = $("#showcase-weight");
+const scPrice = $("#showcase-price");
+const scDots = $("#showcase-dots");
+const scTabs = $("#showcase-tabs");
+
+let scCatIdx = 0;
+let scIdx = 0;
+
+function scItems() { return MENU[CATEGORIES[scCatIdx]]; }
+
+function scRender() {
+  const items = scItems();
+  scIdx = Math.min(scIdx, items.length - 1);
+  const it = items[scIdx];
+  scName.textContent = it.name;
+  scCatLbl.textContent = CATEGORIES[scCatIdx];
+  scDesc.textContent = it.desc;
+  scStory.textContent = it.story || "";
+  scStory.style.display = it.story ? "" : "none";
+  scWeight.textContent = it.tag || "";
+  scPrice.textContent = fmt(it.price);
+  scBadge.textContent = it.badge || "";
+  scBadge.style.display = it.badge ? "" : "none";
+  scImg.alt = it.name;
+  delete scImg.dataset.loaded;
+  scImg.src = "images/dishes/fallback.svg";
+  scImg.dataset.slug = it.img || "";
+  upgradeDishPhoto(scCard);
+  scDots.innerHTML = "";
+  items.forEach((_, i) => {
+    const d = document.createElement("button");
+    d.className = "showcase-dot" + (i === scIdx ? " is-active" : "");
+    d.setAttribute("aria-label", "Блюдо " + (i + 1));
+    d.addEventListener("click", () => { scIdx = i; scSwitch(); });
+    scDots.appendChild(d);
+  });
+}
+
+function scSwitch() {
+  scCard.classList.add("is-out");
+  setTimeout(() => { scRender(); scCard.classList.remove("is-out"); }, 240);
+}
+
+CATEGORIES.forEach((cat, i) => {
+  const b = document.createElement("button");
+  b.className = "showcase-tab" + (i === scCatIdx ? " is-active" : "");
+  b.textContent = cat;
+  b.addEventListener("click", () => {
+    scCatIdx = i; scIdx = 0;
+    $$(".showcase-tab", scTabs).forEach(t => t.classList.toggle("is-active", t === b));
+    scSwitch();
+  });
+  scTabs.appendChild(b);
+});
+
+$("[data-sc-prev]", scStage).addEventListener("click", () => {
+  scIdx = (scIdx - 1 + scItems().length) % scItems().length; scSwitch();
+});
+$("[data-sc-next]", scStage).addEventListener("click", () => {
+  scIdx = (scIdx + 1) % scItems().length; scSwitch();
+});
+
+function scMove(x, y) {
+  const r = scCard.getBoundingClientRect();
+  scStage.style.setProperty("--mx", ((x - r.left) / r.width - 0.5).toFixed(3));
+  scStage.style.setProperty("--my", ((y - r.top) / r.height - 0.5).toFixed(3));
+}
+scStage.addEventListener("mousemove", e => {
+  scCard.classList.add("is-hover");
+  scMove(e.clientX, e.clientY);
+});
+scStage.addEventListener("mouseleave", () => {
+  scCard.classList.remove("is-hover");
+  scStage.style.setProperty("--mx", 0);
+  scStage.style.setProperty("--my", 0);
+});
+const scWrap = $("#showcase");
+if (scWrap) {
+  scWrap.addEventListener("mouseenter", () => scStage.classList.add("is-captured"));
+  scWrap.addEventListener("mouseleave", () => scStage.classList.remove("is-captured"));
+}
+
+let scTouchX = null, scTouchY = null, scTapT = 0;
+scStage.addEventListener("touchstart", e => {
+  scStage.classList.add("is-touch");
+  scTouchX = e.touches[0].clientX;
+  scTouchY = e.touches[0].clientY;
+  scTapT = Date.now();
+}, { passive: true });
+scStage.addEventListener("touchend", e => {
+  const dx = e.changedTouches[0].clientX - scTouchX;
+  const dy = e.changedTouches[0].clientY - scTouchY;
+  if (Math.abs(dx) > 44 && Math.abs(dx) > Math.abs(dy)) {
+    dx < 0 ? $("[data-sc-next]", scStage).click() : $("[data-sc-prev]", scStage).click();
+  } else if (Math.abs(dx) < 12 && Math.abs(dy) < 12 && Date.now() - scTapT < 300) {
+    scCard.classList.toggle("is-hover");
+  }
+}, { passive: true });
+
+scRender();
+
+// ============================================================
 // ОТЗЫВЫ: автослайдер
 // ============================================================
 const reviews = $$(".review");

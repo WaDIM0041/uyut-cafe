@@ -573,6 +573,156 @@ h1, h2, h3, h4 { font-family: var(--font-disp); font-weight: 700; line-height: 1
 .menu__note a { color: var(--accent-deep); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
 
 /* ============================================================
+   ВИТРИНА ВКУСА — «Липкий взгляд» (sticky hover)
+   ============================================================ */
+.showcase__stage {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  perspective: 1100px;
+}
+.showcase__card {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  background: linear-gradient(165deg, var(--bg-card), #1a271f);
+  border: 1px solid rgba(141, 177, 69, 0.3);
+  box-shadow: var(--shadow);
+  transform-style: preserve-3d;
+  transform: rotateX(calc(var(--my, 0) * -7deg)) rotateY(calc(var(--mx, 0) * 7deg));
+  transition: transform 0.25s ease-out, box-shadow 0.5s;
+  will-change: transform;
+}
+.showcase__card.is-hover { box-shadow: 0 34px 80px rgba(10, 20, 14, 0.55); }
+
+.showcase__media { position: relative; aspect-ratio: 16/9.4; overflow: hidden; background: linear-gradient(135deg, #d8e9b4, #8aab45); }
+.showcase__media img {
+  width: 100%; height: 100%; object-fit: cover;
+  transform: scale(1.05) translate3d(calc(var(--mx, 0) * -12px), calc(var(--my, 0) * -10px), 0);
+  transition: transform 0.6s var(--ease);
+}
+.showcase__card.is-hover .showcase__media img {
+  transform: scale(1.18) translate3d(calc(var(--mx, 0) * -18px), calc(var(--my, 0) * -14px), 0);
+}
+
+.showcase__badge {
+  position: absolute; top: 18px; left: 18px; z-index: 2;
+  padding: 7px 16px; border-radius: 999px;
+  background: var(--wine); color: var(--text-light);
+  font-size: 0.78rem; font-weight: 800; letter-spacing: 0.04em;
+  backdrop-filter: blur(8px);
+}
+.showcase__hint {
+  position: absolute; top: 18px; right: 18px; z-index: 2;
+  padding: 8px 16px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85); color: var(--text-ink);
+  font-size: 0.78rem; font-weight: 700;
+  opacity: 1; transform: translateY(0);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.showcase__card.is-hover .showcase__hint { opacity: 0; transform: translateY(-8px); }
+
+.showcase__glare {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(380px circle at calc(50% + var(--mx, 0) * 40%) calc(50% + var(--my, 0) * 40%), rgba(255, 255, 255, 0.16), transparent 62%);
+  transition: opacity 0.45s;
+}
+.showcase__card.is-hover .showcase__glare { opacity: 1; }
+
+.showcase__body { position: relative; z-index: 4; padding: 26px 30px 30px; }
+.showcase__cat {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.74rem; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent-hi);
+  max-height: 0; opacity: 0; overflow: hidden;
+  transition: max-height 0.5s var(--ease), opacity 0.5s var(--ease);
+}
+.showcase__cat::before { content: ""; width: 26px; height: 1.5px; background: currentColor; }
+.showcase__card.is-hover .showcase__cat { max-height: 40px; opacity: 1; }
+.showcase__name { font-size: clamp(1.5rem, 3vw, 2rem); margin: 8px 0 6px; }
+.showcase__desc, .showcase__story {
+  color: var(--text-soft); font-size: 0.98rem;
+  max-height: 0; opacity: 0; overflow: hidden;
+  transition: max-height 0.5s var(--ease), opacity 0.5s var(--ease);
+}
+.showcase__card.is-hover .showcase__desc { max-height: 90px; opacity: 1; }
+.showcase__story {
+  font-style: italic; color: var(--accent-hi); font-size: 0.9rem;
+}
+.showcase__card.is-hover .showcase__story { max-height: 90px; opacity: 1; }
+
+.showcase__meta {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  margin-top: 14px;
+}
+.showcase__weight {
+  padding: 8px 16px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 0.84rem; color: var(--text-soft);
+}
+.showcase__price {
+  font-family: var(--font-disp); font-weight: 700;
+  font-size: 1.8rem; color: var(--accent-hi);
+}
+
+.showcase__arrow {
+  position: absolute; top: 46%; transform: translateY(-50%);
+  z-index: 6;
+  width: 56px; height: 56px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: rgba(23, 16, 11, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--text-light); font-size: 1.7rem;
+  backdrop-filter: blur(8px);
+  opacity: 0; visibility: hidden;
+  transition: 0.35s var(--ease);
+}
+.showcase__stage:hover .showcase__arrow,
+.showcase__stage.is-captured .showcase__arrow,
+.showcase__stage.is-touch .showcase__arrow { opacity: 1; visibility: visible; }
+.showcase__arrow:hover { background: var(--accent); border-color: var(--accent); color: var(--bg-ink); transform: translateY(-50%) scale(1.08); }
+.showcase__arrow.is-prev { left: -26px; }
+.showcase__arrow.is-next { right: -26px; }
+
+.showcase__dots { display: flex; justify-content: center; gap: 9px; margin-top: 22px; }
+.showcase-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(42, 49, 31, 0.25);
+  transition: 0.35s var(--ease);
+}
+.showcase-dot.is-active { background: var(--accent-deep); transform: scale(1.4); }
+
+.showcase__tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+.showcase-tab {
+  padding: 11px 22px; border-radius: 999px;
+  font-weight: 700; font-size: 0.94rem;
+  background: #fff;
+  border: 1.5px solid rgba(42, 49, 31, 0.14);
+  color: var(--text-ink);
+  transition: 0.3s var(--ease);
+}
+.showcase-tab:hover { border-color: var(--accent-deep); transform: translateY(-2px); }
+.showcase-tab.is-active {
+  background: linear-gradient(135deg, var(--accent-hi), var(--accent-deep));
+  border-color: transparent; color: var(--bg-ink);
+  box-shadow: 0 10px 26px rgba(141, 177, 69, 0.35);
+}
+
+.showcase__card.is-out {
+  opacity: 0; transform: translateY(16px) scale(0.985);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+@media (max-width: 860px) {
+  .showcase__arrow { display: none; }
+  .showcase__hint { display: none; }
+  .showcase__card { border-radius: 20px; }
+  .showcase__body { padding: 20px 22px 24px; }
+}
+
+/* ============================================================
    СОЦДОКАЗАТЕЛЬСТВА: цифры + отзывы
    ============================================================ */
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-bottom: 70px; }

@@ -35,6 +35,7 @@
     <nav class="nav" id="nav-menu">
       <a class="nav__link" href="#about">О кафе</a>
       <a class="nav__link" href="#problem">Зачем</a>
+      <a class="nav__link" href="#showcase">Витрина</a>
       <a class="nav__link" href="#menu">Меню</a>
       <a class="nav__link" href="#reviews">Отзывы</a>
       <a class="nav__link" href="#faq">Вопросы</a>
@@ -239,6 +240,44 @@
           <h4>Обедайте и не спешите</h4>
           <p>Тёплый свет, тихая музыка и второй стакан компота — бесплатно. Уходить не захочется, мы предупредили.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ВИТРИНА ВКУСА (интерактив) ===================== -->
+  <section class="section section--cream-soft" id="showcase">
+    <div class="container">
+      <div class="section__head" style="max-width:none;text-align:center;margin-left:auto;margin-right:auto" data-reveal>
+        <span class="kicker" style="justify-content:center">Витрина вкуса</span>
+        <h2 class="section__title">Наведите курсор на блюдо — оно <em>оживёт</em></h2>
+        <p class="section__lead" style="margin:0 auto">Это не статичный список. Повисите над тарелкой — блюдо приподнимется, приоткроет состав и поделится историей рецепта.</p>
+      </div>
+
+      <div class="showcase" data-reveal>
+        <div class="showcase__stage" id="showcase-stage">
+          <article class="showcase__card" id="showcase-card">
+            <div class="showcase__media">
+              <img id="showcase-img" src="images/dishes/fallback.svg" alt="Блюдо дня">
+              <span class="showcase__badge" id="showcase-badge"></span>
+              <span class="showcase__hint">✦ Наведите курсор</span>
+            </div>
+            <div class="showcase__glare"></div>
+            <div class="showcase__body">
+              <span class="showcase__cat" id="showcase-cat"></span>
+              <h3 class="showcase__name" id="showcase-name"></h3>
+              <p class="showcase__desc" id="showcase-desc"></p>
+              <p class="showcase__story" id="showcase-story"></p>
+              <div class="showcase__meta">
+                <span class="showcase__weight" id="showcase-weight"></span>
+                <span class="showcase__price" id="showcase-price"></span>
+              </div>
+            </div>
+          </article>
+          <button class="showcase__arrow is-prev" data-sc-prev aria-label="Предыдущее блюдо">‹</button>
+          <button class="showcase__arrow is-next" data-sc-next aria-label="Следующее блюдо">›</button>
+          <div class="showcase__dots" id="showcase-dots"></div>
+        </div>
+        <div class="showcase__tabs" id="showcase-tabs"></div>
       </div>
     </div>
   </section>
