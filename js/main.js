@@ -188,7 +188,7 @@ function upgradeHeroPhoto(img) {
   probe.src = img.dataset.photo;
 }
 $$(".hero-slide__media img[data-photo]").forEach(upgradeHeroPhoto);
-$$("img[data-photo]:not(.hero-slide__media img)").forEach(upgradeHeroPhoto);
+$$("img[data-photo]").forEach(img => { if (!img.closest(".hero-slide__media")) upgradeHeroPhoto(img); });
 
 function renderMenu(cat) {
   menuGrid.innerHTML = "";
@@ -290,6 +290,24 @@ function saveBooking(b) {
   localStorage.setItem(KEY_BOOKINGS, JSON.stringify(list));
   renderBookings();
 }
+function plural(n, one, few, many) {
+  const m10 = n % 10, m100 = n % 100;
+  if (m10 === 1 && m100 !== 11) return one;
+  if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return few;
+  return many;
+}
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+
+function fmtPhone(d) {
+  d = String(d).replace(/\D/g, "");
+  if (!d) return "";
+  if (d.length < 11) return "+" + d;
+  return `+${d[0]} (${d.slice(1, 4)}) ${d.slice(4, 7)}-${d.slice(7, 9)}-${d.slice(9, 11)}`;
+}
+
 function renderBookings() {
   const list = loadBookings();
   if (!list.length) {
@@ -300,8 +318,8 @@ function renderBookings() {
   bookingList.innerHTML = `<h4 class="bookings-title">Ваши брони (${list.length})</h4>` +
     recent.map(b =>
       `<div class="booking-chip">
-        <div class="booking-chip__main">${b.date} · ${b.time} · ${b.guests} ${b.guests > 1 ? "гостя" : "гость"}</div>
-        <div class="booking-chip__name">${b.name} · +${b.phone}</div>
+        <div class="booking-chip__main">${esc(b.date)} · ${esc(b.time)} · ${b.guests} ${plural(+b.guests, "гость", "гостя", "гостей")}</div>
+        <div class="booking-chip__name">${esc(b.name)} · ${fmtPhone(b.phone)}</div>
       </div>`
     ).join("");
 }
@@ -346,7 +364,7 @@ function validateField(inp, field) {
   }
   if (inp.type === "date") {
     if (val && new Date(val).getTime() < new Date(new Date().toDateString()).getTime()) {
-      setError(field, "Выберите дату не раньше завтрашнего дня");
+      setError(field, "Выберите дату не раньше сегодняшнего дня");
       return false;
     }
   }

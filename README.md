@@ -11,6 +11,13 @@ python3 -m http.server 8000
 npx serve .
 ```
 
+## Деплой на GitHub Pages
+
+Репозиторий уже содержит workflow `.github/workflows/pages.yml` — при пуше в `master`/`main` сайт автоматически задеплоится на GitHub Pages. Нужно только:
+
+1. В настройках репозитория (Settings → Pages) для источника указать **GitHub Actions**.
+2. Запушить код (или вызвать workflow вручную вкладкой Actions).
+
 ## Как поменять контакты и ссылки
 
 Все ссылки, телефон и адрес — в одном месте, в начале файла `js/main.js`:
