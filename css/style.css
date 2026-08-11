@@ -212,13 +212,13 @@ h1, h2, h3, h4 { font-family: var(--font-disp); font-weight: 700; line-height: 1
 .hero-slide__media img { width: 100%; height: 100%; object-fit: cover; }
 .hero-slide.is-active .hero-slide__media.is-zoom { transform: scale(1); }
 
-/* Затемнение — фото проявляется из глубины, тёмный экран спереди */
+/* Затемнение — лёгкая вуаль для читаемости текста, картинка остаётся видна */
 .hero-slide::after {
   content: "";
   position: absolute; inset: 0;
   background:
-    radial-gradient(120% 90% at 50% 0%, rgba(10,6,3,0.28), rgba(10,6,3,0.62) 55%, rgba(10,6,3,0.92) 100%),
-    linear-gradient(180deg, rgba(10,6,3,0.5), transparent 38%, rgba(10,6,3,0.86) 100%);
+    radial-gradient(120% 90% at 50% 0%, rgba(10,6,3,0.16), rgba(10,6,3,0.38) 55%, rgba(10,6,3,0.66) 100%),
+    linear-gradient(180deg, rgba(10,6,3,0.32), transparent 42%, rgba(10,6,3,0.62) 100%);
 }
 
 .hero__content {
@@ -528,19 +528,21 @@ h1, h2, h3, h4 { font-family: var(--font-disp); font-weight: 700; line-height: 1
 .menu-floaters { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
 .menu-floater {
   position: absolute;
-  bottom: -90px;
+  top: 105%;
   left: var(--fx);
   font-size: var(--fs);
-  opacity: 0.12;
+  opacity: 0.14;
   filter: blur(1px);
   animation: floatUp var(--fd, 18s) linear infinite;
   animation-delay: var(--fdelay, 0s);
-  will-change: transform;
+  will-change: top, transform;
 }
 @keyframes floatUp {
-  0% { transform: translateY(0) rotate(-12deg); }
-  50% { transform: translateY(-58vh) rotate(10deg); }
-  100% { transform: translateY(-116vh) rotate(-8deg); }
+  0%   { top: 105%; transform: rotate(-14deg); }
+  25%  { transform: rotate(6deg) scale(1.06); }
+  50%  { transform: rotate(-6deg) scale(0.96); }
+  75%  { transform: rotate(8deg) scale(1.03); }
+  100% { top: -15%; transform: rotate(-10deg); }
 }
 
 .menu-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
@@ -566,16 +568,24 @@ h1, h2, h3, h4 { font-family: var(--font-disp); font-weight: 700; line-height: 1
 .menu-card {
   position: relative;
   border-radius: var(--radius);
-  background: #fff;
+  background: linear-gradient(180deg, #fff, var(--cat-soft, #f6edd9));
+  border: 1px solid rgba(35, 49, 31, 0.1);
   box-shadow: 0 10px 30px rgba(35, 49, 31, 0.08);
   overflow: hidden;
-  transition: transform 0.25s var(--ease), box-shadow 0.4s var(--ease);
+  transition: transform 0.25s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s;
   transform-style: preserve-3d;
   transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0));
   will-change: transform;
 }
+.menu-card::after {
+  content: "";
+  position: absolute; inset: 0 0 auto 0; height: 4px; z-index: 5;
+  background: linear-gradient(90deg, var(--cat-from, #b9d76b), var(--cat-to, #5d7f2e));
+  opacity: 0.85;
+}
 .menu-card:hover {
   box-shadow: 0 30px 60px rgba(35, 49, 31, 0.22);
+  border-color: var(--cat-from, var(--accent));
   transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, -10px));
 }
 /* Световое пятно за курсором */
@@ -613,10 +623,16 @@ h1, h2, h3, h4 { font-family: var(--font-disp); font-weight: 700; line-height: 1
 }
 .menu-card__badge { left: 14px; background: linear-gradient(135deg, var(--cat-from), var(--cat-to)); color: #fff; box-shadow: 0 6px 16px rgba(35,49,31,0.25); }
 .menu-card__tag { right: 14px; background: rgba(255,255,255,0.88); color: var(--text-ink); }
-.menu-card__body { padding: 20px 22px 24px; background: #fff; position: relative; z-index: 2; }
+.menu-card__body { padding: 20px 22px 24px; position: relative; z-index: 2; }
 .menu-card__head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
 .menu-card__name { font-size: 1.16rem; }
-.menu-card__price { font-family: var(--font-disp); font-weight: 700; font-size: 1.3rem; color: var(--cat-badge, var(--accent-deep)); white-space: nowrap; }
+.menu-card__price {
+  font-family: var(--font-disp); font-weight: 700; font-size: 1.3rem;
+  color: #fff; white-space: nowrap;
+  background: linear-gradient(135deg, var(--cat-from), var(--cat-to));
+  padding: 3px 12px; border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(35,49,31,0.18);
+}
 .menu-card__desc { color: var(--text-mute); font-size: 0.9rem; margin-top: 8px; }
 
 .menu__note {
@@ -716,11 +732,15 @@ h1, h2, h3, h4 { font-family: var(--font-disp); font-weight: 700; line-height: 1
     linear-gradient(140deg, var(--bg-card), #1e3023);
   border: 1px solid rgba(141, 177, 69, 0.25);
   box-shadow: var(--shadow);
+  color: var(--text-light);
 }
+.offer h2 { color: var(--text-light); }
+.offer__list li { color: var(--text-light); }
+.offer__list li::before { background: var(--accent-hi); color: var(--bg-ink); }
 .offer__badge {
   display: inline-block;
   padding: 9px 20px; border-radius: 999px;
-  background: linear-gradient(135deg, var(--accent-hi), var(--accent-deep));
+  background: linear-gradient(135deg, var(--accent-hi), var(--accent));
   color: var(--bg-ink); font-weight: 800; font-size: 0.85rem; letter-spacing: 0.06em;
   transform: rotate(-2deg);
   box-shadow: 0 8px 24px rgba(224,164,88,0.4);
@@ -736,17 +756,17 @@ h1, h2, h3, h4 { font-family: var(--font-disp); font-weight: 700; line-height: 1
 .timer__label { font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-soft); }
 .timer__cell {
   min-width: 58px; padding: 12px 8px; text-align: center;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16);
   border-radius: var(--radius-s);
   backdrop-filter: blur(8px);
 }
 .timer__num { font-family: var(--font-disp); font-weight: 700; font-size: 1.7rem; color: var(--accent-hi); font-variant-numeric: tabular-nums; }
-.timer__unit { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mute); }
+.timer__unit { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-soft); }
 .timer__sep { font-family: var(--font-disp); font-size: 1.6rem; color: var(--accent); }
 
 .offer__cta { margin-top: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
-.offer__note { color: var(--text-mute); font-size: 0.9rem; }
+.offer__note { color: var(--text-soft); font-size: 0.9rem; }
 .offer__note b { color: var(--accent-hi); }
 
 /* ============================================================

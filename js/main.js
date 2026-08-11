@@ -163,31 +163,9 @@ const CAT_PALETTES = {
 
 const palettes = cat => CAT_PALETTES[cat] || CAT_PALETTES[CATEGORIES[0]];
 
-// Уютная цветная иллюстрация блюда (генерируется под каждую карточку)
-function dishArt(item, p) {
-  const icon = item.icon || "🍽";
-  const blob = (cx, cy, r, op) =>
-    `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#fff" opacity="${op}"/>`;
-  const svg =
-    `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="${p.from}"/>
-      <stop offset="1" stop-color="${p.to}"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.55">
-      <stop offset="0" stop-color="${p.glow}" stop-opacity="0.85"/>
-      <stop offset="1" stop-color="${p.glow}" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect width="640" height="440" fill="url(#bg)"/>
-  ${blob(520, 60, 150, 0.14)}${blob(80, 400, 130, 0.12)}${blob(600, 360, 110, 0.1)}
-  <circle cx="320" cy="215" r="210" fill="url(#glow)"/>
-  <ellipse cx="320" cy="400" rx="150" ry="46" fill="#1e3023" opacity="0.28"/>
-  <ellipse cx="320" cy="400" rx="108" ry="32" fill="#fff" opacity="0.18"/>
-  <text x="320" y="318" font-size="180" text-anchor="middle">${icon}</text>
-</svg>`;
-  return "data:image/svg+xml," + encodeURIComponent(svg);
+// Фото блюда: сначала цветная SVG-иллюстрация, при наличии реального .jpg — она подставится
+function dishSrc(item) {
+  return item.img ? `images/dishes/${item.img}.svg` : "images/dishes/fallback.svg";
 }
 
 function menuCard(item) {
@@ -195,7 +173,7 @@ function menuCard(item) {
   return `
   <article class="menu-card" data-reveal style="--cat-from:${p.from};--cat-to:${p.to};--cat-soft:${p.soft};--cat-badge:${p.badge}">
     <div class="menu-card__media">
-      <img src="${dishArt(item, p)}" data-slug="${item.img || ""}" alt="${item.name}" loading="lazy">
+      <img src="${dishSrc(item)}" data-slug="${item.img || ""}" alt="${item.name}" loading="lazy">
       ${item.badge ? `<span class="menu-card__badge">${item.badge}</span>` : ""}
       ${item.tag ? `<span class="menu-card__tag">${item.tag}</span>` : ""}
     </div>

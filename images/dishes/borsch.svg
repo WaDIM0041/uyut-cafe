@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#ff8a5c"/>
+    <stop offset="1" stop-color="#d94f2e"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="0.5" cy="0.42" r="0.55">
+    <stop offset="0" stop-color="#fff" stop-opacity="0.55"/>
+    <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+<rect width="640" height="440" fill="url(#bg)"/>
+<circle cx="530" cy="70" r="150" fill="#fff" opacity="0.13"/>
+<circle cx="90" cy="400" r="130" fill="#fff" opacity="0.1"/>
+<circle cx="600" cy="370" r="100" fill="#fff" opacity="0.09"/>
+<circle cx="320" cy="215" r="210" fill="url(#glow)"/>
+
+    <path d="M165 300 a155 58 0 0 0 310 0 Z" fill="#a93a24"/>
+<ellipse cx="320" cy="300" rx="155" ry="58" fill="none" stroke="#a93a24" stroke-width="4"/>
+    <ellipse cx="320" cy="300" rx="132" ry="42" fill="#c94a2c"/>
+    <ellipse cx="300" cy="294" rx="52" ry="18" fill="#f3e7cf"/>
+    <ellipse cx="300" cy="292" rx="34" ry="11" fill="#fbf4e3"/>
+    <circle cx="314.785748096529" cy="336.0870587868918" r="2.402523100659394" fill="#4c7a2a"/><circle cx="277.7662228456649" cy="341.90083636547115" r="2.1112093625570205" fill="#4c7a2a"/><circle cx="338.31552454006817" cy="253.28886970289287" r="3.5147531910412932" fill="#4c7a2a"/><circle cx="382.68226217096105" cy="346.3653788682028" r="2.910973241586976" fill="#4c7a2a"/><circle cx="321.0395467779633" cy="257.2192024718663" r="2.948003671722712" fill="#4c7a2a"/><circle cx="364.1037526813767" cy="305.20470236434267" r="3.754018218945319" fill="#4c7a2a"/><circle cx="308.67648214471217" cy="321.24667484696374" r="2.169770544563076" fill="#4c7a2a"/><circle cx="338.66998913414477" cy="355.97698245793435" r="2.8721553810162206" fill="#4c7a2a"/>
+    <rect x="252" y="196" width="20" height="34" rx="10" fill="#8a2f1c"/>
+    <rect x="368" y="196" width="20" height="34" rx="10" fill="#8a2f1c"/>
+    <path d="M294 180 c-8 -14 8 -16 0 -30 c-7 -13 7 -15 0 -28" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.65"/><path d="M320 180 c-8 -14 8 -16 0 -30 c-7 -13 7 -15 0 -28" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.65"/><path d="M346 180 c-8 -14 8 -16 0 -30 c-7 -13 7 -15 0 -28" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.65"/>
+    <text x="320" y="420" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="26" fill="#fff" opacity="0.85">борщ со сметаной</text>
+</svg>
