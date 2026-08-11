@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>УЮТ — домашнее кафе с комплексными обедами в Москве | Обед как дома</title>
+  <meta name="description" content="Уютное домашнее кафе с комплексными обедами: борщ, котлеты по-домашнему, пироги и пельмени ручной лепки. Тёплая атмосфера, обед от 430 ₽, бронирование столика онлайн.">
+  <meta name="keywords" content="домашнее кафе, комплексные обеды, обед как дома, уютное кафе, бизнес-ланч, домашняя кухня, кафе с бронированием столиков">
+  <meta property="og:title" content="УЮТ — домашнее кафе с комплексными обедами">
+  <meta property="og:description" content="Обед, после которого вы почувствуете себя дома. Комплексные обеды от 430 ₽.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/hero-interior.svg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%238db145'/%3E%3Ctext x='50' y='66' font-size='46' text-anchor='middle' fill='%2317100b' font-family='Georgia'%3EУ%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="grain">
+
+<div class="read-progress" id="read-progress"></div>
+
+<!-- ===================== ШАПКА ===================== -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="#hero" class="logo">
+      <span class="logo__mark">У</span>
+      <span>УЮТ<small>домашнее кафе</small></span>
+    </a>
+
+    <button class="burger" id="burger" aria-label="Открыть меню">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="nav-menu">
+      <a class="nav__link" href="#about">О кафе</a>
+      <a class="nav__link" href="#problem">Зачем</a>
+      <a class="nav__link" href="#menu">Меню</a>
+      <a class="nav__link" href="#reviews">Отзывы</a>
+      <a class="nav__link" href="#faq">Вопросы</a>
+      <a class="nav__link" href="#contacts">Контакты</a>
+      <div class="nav__social">
+        <a class="social-btn" data-telegram href="#" aria-label="Написать в Telegram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.6 18.9 19c-.2 1-.8 1.2-1.7.8l-4.6-3.4-2.2 2.1c-.2.3-.5.5-.9.5l.3-4.6 8.4-7.6c.4-.3-.1-.5-.6-.2L7.4 13.3 3 11.9c-1-.3-1-1 .2-1.5L20.5 3.4c.8-.3 1.5.2 1.4 1.2Z"/></svg>
+        </a>
+        <a class="social-btn" data-vk href="#" aria-label="Мы во ВКонтакте" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 18.5c-6.6 0-10.4-4.5-10.6-12h3.3c.1 5.5 2.5 7.8 4.4 8.3V6.5h3v4.7c1.9-.2 3.9-2.4 4.6-4.7h3c-.5 2.9-2.7 5.1-4.2 6 1.5.7 3.9 2.6 4.8 6.2h-3.4c-.7-2.2-2.5-4-4.8-4.2v4.2H13Z"/></svg>
+        </a>
+      </div>
+      <a class="btn btn--primary btn--sm nav__cta" href="#" data-open-booking>Забронировать</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="hero">
+    <div class="hero-slide is-active">
+      <picture class="hero-slide__media is-zoom">
+        <img src="images/hero-interior.svg" data-photo="images/hero-interior.jpg" alt="Тёплый интерьер кафе УЮТ — деревянные столики, свечи и мягкий свет">
+      </picture>
+    </div>
+    <div class="hero-slide">
+      <picture class="hero-slide__media">
+        <img src="images/hero-exterior.svg" data-photo="images/hero-exterior.jpg" alt="Вечерний фасад кафе УЮТ — тёплые окна и уличная вывеска">
+      </picture>
+    </div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow">Домашнее кафе · комплексные обеды</p>
+      <h1 class="hero__title">Обед, после которого хочется <em>остаться ещё на чай</em></h1>
+      <p class="hero__sub">Уютное домашнее кафе, где пахнет бабушкиными пирогами и звучит тихая музыка. Комплексные обеды от 430 ₽ — за 15 минут от работы.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#" data-open-booking>Забронировать столик <span class="btn__arrow">→</span></a>
+        <a class="btn btn--ghost" href="#menu">Смотреть меню</a>
+      </div>
+      <ul class="hero__benefits">
+        <li class="hero__benefit"><b>✓</b> Домашняя кухня без полуфабрикатов</li>
+        <li class="hero__benefit"><b>✓</b> Обед подан за 15 минут</li>
+        <li class="hero__benefit"><b>✓</b> Скидка 10% на первый визит</li>
+      </ul>
+    </div>
+
+    <div class="hero__card">
+      <h3>Кафе «УЮТ»</h3>
+      <p>Деревянные столики, свечи, тёплый свет и запах свежей выпечки. Здесь вы приходите как на обед — а уходите как из дома.</p>
+      <div class="hero__card-divider"></div>
+      <div class="hero__card-row"><b>☕</b> <span data-hours></span></div>
+      <div class="hero__card-row" style="margin-top:8px"><b>📍</b> <span data-address></span></div>
+    </div>
+
+    <div class="hero__dots">
+      <button class="hero__dot is-active" aria-label="Слайд: интерьер"></button>
+      <button class="hero__dot" aria-label="Слайд: фасад"></button>
+    </div>
+    <button class="hero__arrow is-prev" aria-label="Предыдущее фото">‹</button>
+    <button class="hero__arrow is-next" aria-label="Следующее фото">›</button>
+
+    <div class="hero__scroll">
+      <div class="hero__mouse"></div>
+      листайте вниз
+    </div>
+  </section>
+
+  <!-- Бегущая строка -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span class="marquee__item">Борщ на говяжьей косточке</span>
+      <span class="marquee__item">Пельмени ручной лепки</span>
+      <span class="marquee__item">Пироги из печи каждое утро</span>
+      <span class="marquee__item">Иван-чай с чабрецом</span>
+      <span class="marquee__item">Сырники со сгущёнкой</span>
+      <span class="marquee__item">Комплексные обеды от 430 ₽</span>
+      <span class="marquee__item">Борщ на говяжьей косточке</span>
+      <span class="marquee__item">Пельмени ручной лепки</span>
+      <span class="marquee__item">Пироги из печи каждое утро</span>
+      <span class="marquee__item">Иван-чай с чабрецом</span>
+      <span class="marquee__item">Сырники со сгущёнкой</span>
+      <span class="marquee__item">Комплексные обеды от 430 ₽</span>
+    </div>
+  </div>
+
+  <!-- ===================== О КАФЕ / РЕШЕНИЕ ===================== -->
+  <section class="section section--peach" id="about">
+    <span class="warm-orb" style="width:520px;height:520px;left:-140px;top:0;background:var(--accent)"></span>
+    <div class="container">
+      <div class="solution">
+        <div class="section__head" data-reveal>
+          <span class="kicker">Наше решение</span>
+          <h2 class="section__title">Кафе, где вы — не гость, а <em>свой человек</em></h2>
+          <p class="section__lead">Мы не «инновационная точка питания». Мы — место, куда возвращаются за вторым компотом и лишним куском пирога. Вот что это значит на практике:</p>
+          <div class="solution__ticket">
+            <span style="font-size:2rem">🎫</span>
+            <div>
+              <b>Комплексный обед — 430 ₽</b>
+              <p style="color:var(--text-soft);font-size:0.92rem">Суп + горячее + салат + компот и хлеб от пекаря. Наливающему компот — второй стакан бесплатно.</p>
+            </div>
+          </div>
+        </div>
+        <div class="solution__grid">
+          <div class="solution__card" data-reveal>
+            <span class="ico">🍲</span>
+            <div>
+              <h4>Кухня без секретов</h4>
+              <p>Никаких полуфабрикатов: борщ томится 4 часа, котлеты жарятся на сливочном масле, пироги — каждое утро. Вы чувствуете это с порога.</p>
+            </div>
+          </div>
+          <div class="solution__card" data-reveal>
+            <span class="ico">🕰</span>
+            <div>
+              <h4>Обед за 15 минут</h4>
+              <p>Комплексный обед подаём за четверть часа — даже если у вас «всего 40 минут на перерыв». Успеете и поесть, и выдохнуть.</p>
+            </div>
+          </div>
+          <div class="solution__card" data-reveal>
+            <span class="ico">🪑</span>
+            <div>
+              <h4>Место, где можно не спешить</h4>
+              <p>Удобные стулья, мягкий свет, тихая музыка и никто не подгоняет. Хотите посидеть с книгой — оставайтесь на весь вечер.</p>
+            </div>
+          </div>
+          <div class="solution__card" data-reveal>
+            <span class="ico">👨‍👩‍👧</span>
+            <div>
+              <h4>Домашние цены</h4>
+              <p>Обед с компотом и пирогом — дешевле, чем готовить дома при нынешних ценах. А ещё дешевле — скидки для постоянных гостей.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ПРОБЛЕМА ===================== -->
+  <section class="section section--cream" id="problem">
+    <div class="container">
+      <div class="problem">
+        <div class="problem__media" data-reveal>
+          <img src="images/hero-interior.svg" data-photo="images/cafe-interior.jpg" alt="Уютная атмосфера внутри кафе УЮТ" style="aspect-ratio:4/5">
+          <div class="problem__float">
+            <b>Знакомо?</b>
+            Сэндвич на бегу, кофе из автомата и завтрак, который вы едите стоя
+          </div>
+        </div>
+        <div>
+          <span class="kicker" data-reveal>Знакомая история</span>
+          <h2 class="section__title" data-reveal>Обед на бегу — это не обед</h2>
+          <p class="section__lead" data-reveal>Скажите честно: как прошёл ваш последний обед? Если он был у экрана монитора, с бутербродом в одной руке и телефоном в другой — этот текст для вас.</p>
+          <ul class="problem__list">
+            <li class="problem__item" data-reveal>
+              <span class="ico">😮‍💨</span>
+              <p>«Даже не понял, что поел». <small>Пища проглочена, а усталость осталась — выходите из-за стола ещё более вымотанным.</small></p>
+            </li>
+            <li class="problem__item" data-reveal>
+              <span class="ico">🍜</span>
+              <p>Всё одно и то же: роллы, шаурма, «быстрое» — <small>через месяц вы перестаёте чувствовать вкус, зато чувствуете тяжесть.</small></p>
+            </li>
+            <li class="problem__item" data-reveal>
+              <span class="ico">💸</span>
+              <p>Дорого и невкусно — <small>500–700 ₽ за еду, которая не греет ни тело, ни душу.</small></p>
+            </li>
+            <li class="problem__item" data-reveal>
+              <span class="ico">🫥</span>
+              <p>А самое главное — нет места, где можно выдохнуть. <small>Перерыв уходит на то, чтобы поесть. А не наоборот.</small></p>
+            </li>
+          </ul>
+          <div data-reveal style="margin-top:30px">
+            <a class="btn btn--cream" href="#" data-open-booking>Я хочу нормально пообедать <span class="btn__arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== КАК ЭТО РАБОТАЕТ ===================== -->
+  <section class="section section--sky" id="how">
+    <span class="warm-orb" style="width:460px;height:460px;right:-120px;top:60px;background:var(--wine)"></span>
+    <div class="container">
+      <div class="section__head" style="max-width:none;text-align:center;margin-left:auto;margin-right:auto" data-reveal>
+        <span class="kicker" style="justify-content:center">Как это работает</span>
+        <h2 class="section__title">Три шага — и вы уже за тёплым столом</h2>
+        <p class="section__lead" style="margin:0 auto">Проще, чем заказать еду с доставкой. Проверьте сами.</p>
+      </div>
+      <div class="steps">
+        <div class="step" data-reveal>
+          <div class="step__ico">📅</div>
+          <h4>Забронируйте столик</h4>
+          <p>Нажмите кнопку, выберите дату и время — бронь сохранится у нас и у вас. Минута, и готово.</p>
+          <span class="step__arrow">→</span>
+        </div>
+        <div class="step" data-reveal>
+          <div class="step__ico">🥣</div>
+          <h4>Приходите и выбирайте</h4>
+          <p>Комплексный обед или любимое блюдо из меню — всё готовится утром, поэтому быстро и по-домашнему вкусно.</p>
+          <span class="step__arrow">→</span>
+        </div>
+        <div class="step" data-reveal>
+          <div class="step__ico">🍵</div>
+          <h4>Обедайте и не спешите</h4>
+          <p>Тёплый свет, тихая музыка и второй стакан компота — бесплатно. Уходить не захочется, мы предупредили.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== МЕНЮ ===================== -->
+  <section class="section menu-wrap" id="menu">
+    <span class="warm-orb" style="width:420px;height:420px;right:-80px;top:40px;background:var(--accent);opacity:0.25"></span>
+    <div class="container">
+      <div class="section__head" data-reveal>
+        <span class="kicker">Меню</span>
+        <h2 class="section__title">Готовим то, что ели бы сами</h2>
+        <p class="section__lead">Каждое утро на кухне «УЮТ» пахнет свежим хлебом. Выберите категорию и найдите свой обед.</p>
+      </div>
+
+      <div class="menu-tabs" id="menu-tabs" data-reveal></div>
+      <div class="menu-grid" id="menu-grid"></div>
+
+      <p class="menu__note" data-reveal>
+        Не нашли любимое блюдо? <a href="#" data-open-booking>Забронируйте столик</a> — и мы приготовим его специально для вас.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== СОЦДОКАЗАТЕЛЬСТВА ===================== -->
+  <section class="section section--dark" id="reviews">
+    <span class="warm-orb" style="width:500px;height:500px;left:-140px;bottom:0;background:var(--accent)"></span>
+    <div class="container">
+      <div class="section__head" style="max-width:none;text-align:center;margin-left:auto;margin-right:auto" data-reveal>
+        <span class="kicker" style="justify-content:center">Нам верят</span>
+        <h2 class="section__title">Цифры, за которыми — живые люди</h2>
+      </div>
+
+      <div class="stats">
+        <div class="stat" data-reveal><div class="stat__num"><span data-count="2400" data-suffix="+">0</span></div><div class="stat__label">комплексных обедов подано</div></div>
+        <div class="stat" data-reveal><div class="stat__num"><span data-count="430">0</span> ₽</div><div class="stat__label">самый честный обед в городе</div></div>
+        <div class="stat" data-reveal><div class="stat__num"><span data-count="15">0</span> мин</div><div class="stat__label">среднее время подачи обеда</div></div>
+        <div class="stat" data-reveal><div class="stat__num"><span data-count="96" data-suffix="%">0</span></div><div class="stat__label">гостей возвращаются снова</div></div>
+      </div>
+
+      <div class="reviews" data-reveal>
+        <div class="review is-active">
+          <p class="review__text">Первый раз зашла случайно — укрыться от дождя. Теперь укрываюсь здесь от всего: от работы, от спешки, от пакетов с едой на бегу. Пирог с яблоками — это маленькое счастье в рабочий день.</p>
+          <div class="review__stars">★★★★★</div>
+          <div class="review__author"><span class="review__ava">А</span><div style="text-align:left"><b>Анна, маркетолог</b><span>ходит на обеды 4 месяца</span></div></div>
+        </div>
+        <div class="review">
+          <p class="review__text">Я объездил полгорода по работе. Здесь единственное место, где обед за 15 минут — это реально 15 минут, а не «ну ещё пару минуточек». И компот — как у бабушки, честное слово.</p>
+          <div class="review__stars">★★★★★</div>
+          <div class="review__author"><span class="review__ava">С</span><div style="text-align:left"><b>Сергей, водитель</b><span>заезжает 2–3 раза в неделю</span></div></div>
+        </div>
+        <div class="review">
+          <p class="review__text">Привели дочку на сырники, а в итоге просидели весь вечер. Тёплый свет, запах выпечки, и никто не торопит. Такое ощущение, что мы не в кафе, а в гостях у хороших знакомых.</p>
+          <div class="review__stars">★★★★★</div>
+          <div class="review__author"><span class="review__ava">М</span><div style="text-align:left"><b>Марина</b><span>приходит с семьёй по выходным</span></div></div>
+        </div>
+      </div>
+      <div class="review-dots">
+        <button class="review-dot is-active" aria-label="Отзыв 1"></button>
+        <button class="review-dot" aria-label="Отзыв 2"></button>
+        <button class="review-dot" aria-label="Отзыв 3"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="section section--mint" id="faq">
+    <div class="container">
+      <div class="section__head" data-reveal>
+        <span class="kicker">Честные ответы</span>
+        <h2 class="section__title">Сомневаетесь? Справедливо. Отвечаем</h2>
+        <p class="section__lead">Собрали вопросы, которые нам задают чаще всего. Если не нашли свой — напишите нам в Telegram.</p>
+      </div>
+
+      <div class="faq" data-reveal>
+        <div class="faq__item is-open">
+          <button class="faq__q">У вас дорого?<span class="faq__icon"></span></button>
+          <div class="faq__a"><p class="faq__a-inner">Комплексный обед — 430 ₽. Это суп, горячее, салат, компот и свежий хлеб. Посчитайте, во сколько обходится готовка дома: продукты, газ, время и «что же сегодня приготовить». Скорее всего, дома выйдет дороже. А у нас ещё и посуды мыть не нужно.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q">А если у меня всего 40 минут на обед?<span class="faq__icon"></span></button>
+          <div class="faq__a"><p class="faq__a-inner">Комплексный обед подаём за 15 минут. А если вы позвоните заранее и попросите накрыть стол к приходу — он уже будет ждать вас. Бронь столика занимает минуту.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q">Вдруг мне не понравится?<span class="faq__icon"></span></button>
+          <div class="faq__a"><p class="faq__a-inner">Тогда мы заменим блюдо или вернём деньги — без вопросов и выяснения отношений. Нам важнее, чтобы вы вернулись, чем чтобы «победить в споре». За 2 года мы не пользовались этим правилом и 20 раз — гости ценят честность.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q">Это же неудобно — бронировать. Можно просто прийти?<span class="faq__icon"></span></button>
+          <div class="faq__a"><p class="faq__a-inner">Можно, конечно! Но в обеденное время столики у окна разбирают быстро. Бронь — это способ гарантированно попасть в любимое место, а не лишняя формальность. Кстати, бронь можно отменить в один клик.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q">У вас шумно и многолюдно?<span class="faq__icon"></span></button>
+          <div class="faq__a"><p class="faq__a-inner">Нет. Мы сознательно держим немного столиков, чтобы в зале было тихо и спокойно. Сюда приходят, чтобы выдохнуть, а не чтобы договариваться на повышенных тонах.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q">Можно с ребёнком или с собакой?<span class="faq__icon"></span></button>
+          <div class="faq__a"><p class="faq__a-inner">Конечно! Для детей есть стульчики и творожные сырники, а маленьким собакам — миска с водой и пара ласковых слов. Главное — предупредите при бронировании, мы подготовимся.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ОФФЕР ===================== -->
+  <section class="section section--lilac" id="offer">
+    <span class="warm-orb" style="width:560px;height:560px;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--accent);opacity:0.16"></span>
+    <div class="container">
+      <div class="offer" data-reveal>
+        <span class="offer__badge">Спецпредложение · только для новых гостей</span>
+        <h2>Обед со скидкой <span>10%</span> и десерт <span>в подарок</span></h2>
+        <ul class="offer__list">
+          <li>Скидка 10% на первый визит — покажите бронь на входе</li>
+          <li>Пирог с яблоками или сырники — в подарок к обеду</li>
+          <li>Напиток из меню — за нами, как компот «догоняй»</li>
+        </ul>
+        <div class="timer">
+          <span class="timer__label">Предложение действует ещё</span>
+          <span class="timer__cell"><div class="timer__num" data-timer-h>00</div><div class="timer__unit">часов</div></span>
+          <span class="timer__sep">:</span>
+          <span class="timer__cell"><div class="timer__num" data-timer-m>00</div><div class="timer__unit">минут</div></span>
+          <span class="timer__sep">:</span>
+          <span class="timer__cell"><div class="timer__num" data-timer-s>00</div><div class="timer__unit">секунд</div></span>
+        </div>
+        <div class="offer__cta">
+          <a class="btn btn--primary" href="#" data-open-booking>Забрать скидку — забронировать <span class="btn__arrow">→</span></a>
+          <span class="offer__note">Осталось <b>7 мест</b> на этой неделе · бронь ни к чему не обязывает</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== КОНТАКТЫ ===================== -->
+  <section class="section section--dark" id="contacts">
+    <div class="container">
+      <div class="section__head" data-reveal>
+        <span class="kicker">Как нас найти</span>
+        <h2 class="section__title">Мы ждём вас в самом тёплом месте города</h2>
+      </div>
+
+      <div class="contacts">
+        <div class="contact-info">
+          <div class="contact-card" data-reveal>
+            <span class="ico">📍</span>
+            <div>
+              <h4>Адрес</h4>
+              <p data-address></p>
+              <button id="copy-address" class="btn btn--ghost btn--sm" style="margin-top:10px">Скопировать адрес</button>
+            </div>
+          </div>
+          <div class="contact-card" data-reveal>
+            <span class="ico">🕰</span>
+            <div>
+              <h4>Часы работы</h4>
+              <p data-hours></p>
+            </div>
+          </div>
+          <div class="contact-card" data-reveal>
+            <span class="ico">📞</span>
+            <div>
+              <h4>Телефон</h4>
+              <p><a data-phone-href href="#"><span data-phone-text></span></a></p>
+            </div>
+          </div>
+          <div class="contact-card" data-reveal>
+            <span class="ico">💬</span>
+            <div>
+              <h4>Всегда на связи</h4>
+              <p>Чат-бот в Telegram подскажет меню и время ожидания, а в VK мы публикуем фото свежей выпечки.</p>
+              <div class="contact-social">
+                <a class="social-btn" data-telegram href="#" target="_blank" rel="noopener" aria-label="Чат-бот в Telegram">
+                  <svg viewBox="0 0 24 24" fill="currentColor" style="width:24px;height:24px"><path d="M21.9 4.6 18.9 19c-.2 1-.8 1.2-1.7.8l-4.6-3.4-2.2 2.1c-.2.3-.5.5-.9.5l.3-4.6 8.4-7.6c.4-.3-.1-.5-.6-.2L7.4 13.3 3 11.9c-1-.3-1-1 .2-1.5L20.5 3.4c.8-.3 1.5.2 1.4 1.2Z"/></svg>
+                </a>
+                <a class="social-btn" data-vk href="#" target="_blank" rel="noopener" aria-label="Мы во ВКонтакте">
+                  <svg viewBox="0 0 24 24" fill="currentColor" style="width:24px;height:24px"><path d="M13 18.5c-6.6 0-10.4-4.5-10.6-12h3.3c.1 5.5 2.5 7.8 4.4 8.3V6.5h3v4.7c1.9-.2 3.9-2.4 4.6-4.7h3c-.5 2.9-2.7 5.1-4.2 6 1.5.7 3.9 2.6 4.8 6.2h-3.4c-.7-2.2-2.5-4-4.8-4.2v4.2H13Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-card" data-reveal>
+          <div class="map-fallback">
+            <span class="map-pin">📍</span>
+            <b>Мы здесь — прямо в центре</b>
+            <p data-address style="color:var(--text-soft)"></p>
+            <a class="btn btn--primary btn--sm" href="#" data-open-booking>Забронировать столик</a>
+            <p style="font-size:0.85rem;color:var(--text-mute)">Загрузите карту, вставив код Яндекс.Карт в <code>index.html</code> → блок <code>#contacts</code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===================== ФУТЕР ===================== -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__copy">© <span data-year></span> Кафе «УЮТ» · домашние комплексные обеды</div>
+    <nav class="footer__nav">
+      <a href="#menu">Меню</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#faq">Вопросы</a>
+      <a href="#contacts">Контакты</a>
+      <a data-telegram href="#" target="_blank" rel="noopener">Telegram</a>
+      <a data-vk href="#" target="_blank" rel="noopener">VK</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- ===================== МОДАЛКА БРОНИРОВАНИЯ ===================== -->
+<div class="modal" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-title">
+  <div class="modal__dialog">
+    <button class="modal__close" data-close-booking aria-label="Закрыть">✕</button>
+    <h2 class="modal__title" id="booking-title">Забронировать столик</h2>
+    <p class="modal__sub">Оставьте заявку — мы позвоним и подтвердим бронь за 15 минут.</p>
+
+    <form id="booking-form" novalidate>
+      <div class="field">
+        <label class="field__label" for="booking-name">Ваше имя <span>*</span></label>
+        <input class="field__input" type="text" id="booking-name" name="name" required placeholder="Например, Анна">
+        <span class="field__msg"></span>
+      </div>
+      <div class="field">
+        <label class="field__label" for="booking-phone">Телефон <span>*</span></label>
+        <input class="field__input" type="tel" id="booking-phone" name="phone" required placeholder="+7 (___) ___-__-__" autocomplete="tel">
+        <span class="field__msg"></span>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field__label" for="booking-date">Дата <span>*</span></label>
+          <input class="field__input" type="date" id="booking-date" name="date" required>
+          <span class="field__msg"></span>
+        </div>
+        <div class="field">
+          <label class="field__label" for="booking-time">Время <span>*</span></label>
+          <input class="field__input" type="time" id="booking-time" name="time" required>
+          <span class="field__msg"></span>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field__label" for="booking-guests">Количество гостей</label>
+        <select class="field__input" id="booking-guests" name="guests">
+          <option value="1">1 гость</option>
+          <option value="2" selected>2 гостя</option>
+          <option value="3">3 гостя</option>
+          <option value="4">4 гостя</option>
+          <option value="6">5–6 гостей</option>
+        </select>
+        <span class="field__msg"></span>
+      </div>
+      <div class="field">
+        <label class="field__label" for="booking-comment">Пожелания</label>
+        <textarea class="field__input" id="booking-comment" name="comment" rows="2" placeholder="Столик у окна, детский стульчик, именинный пирог…"></textarea>
+        <span class="field__msg"></span>
+      </div>
+      <button type="submit" class="btn btn--primary form__submit">Подтвердить бронь</button>
+      <p class="form__note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+    </form>
+
+    <div class="booking-list" id="booking-list"></div>
+  </div>
+</div>
+
+<div class="toast-box" id="toast-box"></div>
+
+<button class="to-top" id="to-top" aria-label="Наверх">↑</button>
+
+<script src="js/menu.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
