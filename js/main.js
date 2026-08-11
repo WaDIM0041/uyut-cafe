@@ -151,11 +151,51 @@ counters.forEach(el => cio.observe(el));
 const menuGrid = $("#menu-grid");
 let activeCat = CATEGORIES[0];
 
+// Палитры категорий: каждая категория — свой цветовой визуал
+const CAT_PALETTES = {
+  "Комплексные обеды": { from: "#ffb35c", to: "#e0762f", glow: "#ffe3b3", soft: "#fff1dc", badge: "#c96f2e" },
+  "Супы":             { from: "#ff8a5c", to: "#d94f2e", glow: "#ffd0b8", soft: "#fff0e8", badge: "#d94f2e" },
+  "Горячее":          { from: "#c98a3f", to: "#8a5a1f", glow: "#f0cf9a", soft: "#f7e9d2", badge: "#8a5a1f" },
+  "Салаты":           { from: "#9dbf4e", to: "#5f8a26", glow: "#d7ef9a", soft: "#eff7da", badge: "#5f8a26" },
+  "Выпечка и десерты": { from: "#f0a3b8", to: "#d0638a", glow: "#ffd5e0", soft: "#fdeef2", badge: "#c25578" },
+  "Напитки":          { from: "#7fb7c9", to: "#3f7fa0", glow: "#d2eef6", soft: "#eaf6fa", badge: "#2f6f92" }
+};
+
+const palettes = cat => CAT_PALETTES[cat] || CAT_PALETTES[CATEGORIES[0]];
+
+// Уютная цветная иллюстрация блюда (генерируется под каждую карточку)
+function dishArt(item, p) {
+  const icon = item.icon || "🍽";
+  const blob = (cx, cy, r, op) =>
+    `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#fff" opacity="${op}"/>`;
+  const svg =
+    `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="${p.from}"/>
+      <stop offset="1" stop-color="${p.to}"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.55">
+      <stop offset="0" stop-color="${p.glow}" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="${p.glow}" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="440" fill="url(#bg)"/>
+  ${blob(520, 60, 150, 0.14)}${blob(80, 400, 130, 0.12)}${blob(600, 360, 110, 0.1)}
+  <circle cx="320" cy="215" r="210" fill="url(#glow)"/>
+  <ellipse cx="320" cy="400" rx="150" ry="46" fill="#1e3023" opacity="0.28"/>
+  <ellipse cx="320" cy="400" rx="108" ry="32" fill="#fff" opacity="0.18"/>
+  <text x="320" y="318" font-size="180" text-anchor="middle">${icon}</text>
+</svg>`;
+  return "data:image/svg+xml," + encodeURIComponent(svg);
+}
+
 function menuCard(item) {
+  const p = palettes(activeCat);
   return `
-  <article class="menu-card" data-reveal>
+  <article class="menu-card" data-reveal style="--cat-from:${p.from};--cat-to:${p.to};--cat-soft:${p.soft};--cat-badge:${p.badge}">
     <div class="menu-card__media">
-      <img src="images/dishes/fallback.svg" data-slug="${item.img || ""}" alt="${item.name}" loading="lazy">
+      <img src="${dishArt(item, p)}" data-slug="${item.img || ""}" alt="${item.name}" loading="lazy">
       ${item.badge ? `<span class="menu-card__badge">${item.badge}</span>` : ""}
       ${item.tag ? `<span class="menu-card__tag">${item.tag}</span>` : ""}
     </div>
@@ -167,6 +207,24 @@ function menuCard(item) {
       <p class="menu-card__desc">${item.desc}</p>
     </div>
   </article>`;
+}
+
+// 3D-наклон карточки и световое пятно за курсором
+function attachCardTilt(card) {
+  const SPEED = 9;
+  card.addEventListener("mousemove", e => {
+    const r = card.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5;
+    const py = (e.clientY - r.top) / r.height - 0.5;
+    card.style.setProperty("--rx", (-py * SPEED).toFixed(2) + "deg");
+    card.style.setProperty("--ry", (px * SPEED).toFixed(2) + "deg");
+    card.style.setProperty("--mx", ((px + 0.5) * 100).toFixed(1) + "%");
+    card.style.setProperty("--my", ((py + 0.5) * 100).toFixed(1) + "%");
+  });
+  card.addEventListener("mouseleave", () => {
+    card.style.setProperty("--rx", "0deg");
+    card.style.setProperty("--ry", "0deg");
+  });
 }
 
 // Умная подстановка фото: если реальный .jpg существует — подставляем его,
@@ -198,6 +256,7 @@ function renderMenu(cat) {
     const card = wrap.firstElementChild;
     menuGrid.appendChild(card);
     io.observe(card);
+    attachCardTilt(card);
     upgradeDishPhoto(card);
   });
 }
@@ -206,8 +265,11 @@ function renderTabs() {
   const tabs = $("#menu-tabs");
   tabs.innerHTML = "";
   CATEGORIES.forEach(cat => {
+    const p = palettes(cat);
     const b = document.createElement("button");
     b.className = "menu-tab" + (cat === activeCat ? " is-active" : "");
+    b.style.setProperty("--cat-from", p.from);
+    b.style.setProperty("--cat-to", p.to);
     b.textContent = cat;
     b.addEventListener("click", () => {
       activeCat = cat;
