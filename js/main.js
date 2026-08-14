@@ -4,10 +4,10 @@
 const CONFIG = {
   telegram: "https://t.me/uyut_cafe",          // ссылка на чат-бота Telegram
   vk: "https://vk.com/uyut_cafe",              // ссылка на сообщество VK
-  phone: "+7 (999) 123-45-67",
-  phoneHref: "+79991234567",
-  address: "Ультрамариновая улица, 4, Санкт-Петербург",
-  hours: "Пн–Вс · 09:00–22:00",
+  phone: "+7 (981) 964-93-37",
+  phoneHref: "+79819649337",
+  address: "Санкт-Петербург, Ультрамариновая ул., 8",
+  hours: "Вт–Вс · 10:00–21:00 · понедельник — выходной",
   deadlineDays: 1                              // дедлайн спецпредложения (в днях)
 };
 
@@ -54,7 +54,7 @@ function showSlide(i) {
 function nextSlide() { slideIndex = (slideIndex + 1) % slides.length; showSlide(slideIndex); }
 function restartSlideTimer() {
   clearInterval(slideTimer);
-  slideTimer = setInterval(nextSlide, 7000);
+  slideTimer = setInterval(nextSlide, 8000);
 }
 restartSlideTimer();
 
@@ -151,17 +151,26 @@ counters.forEach(el => cio.observe(el));
 const menuGrid = $("#menu-grid");
 let activeCat = CATEGORIES[0];
 
-// Палитры категорий: каждая категория — свой цветовой визуал
 const CAT_PALETTES = {
-  "Комплексные обеды": { from: "#ffb35c", to: "#e0762f", glow: "#ffe3b3", soft: "#fff1dc", badge: "#c96f2e" },
-  "Супы":             { from: "#ff8a5c", to: "#d94f2e", glow: "#ffd0b8", soft: "#fff0e8", badge: "#d94f2e" },
-  "Горячее":          { from: "#c98a3f", to: "#8a5a1f", glow: "#f0cf9a", soft: "#f7e9d2", badge: "#8a5a1f" },
-  "Салаты":           { from: "#9dbf4e", to: "#5f8a26", glow: "#d7ef9a", soft: "#eff7da", badge: "#5f8a26" },
-  "Выпечка и десерты": { from: "#f0a3b8", to: "#d0638a", glow: "#ffd5e0", soft: "#fdeef2", badge: "#c25578" },
-  "Напитки":          { from: "#7fb7c9", to: "#3f7fa0", glow: "#d2eef6", soft: "#eaf6fa", badge: "#2f6f92" }
+  "Завтраки":             { from: "#ffcf6e", to: "#e0762f", glow: "#ffe3b3", soft: "#fff1dc", badge: "#c96f2e" },
+  "Завтраки ежедневно":   { from: "#ffc06e", to: "#d96f1f", glow: "#ffe0b8", soft: "#fff0e0", badge: "#c95f1e" },
+  "Горячее":              { from: "#c98a3f", to: "#8a5a1f", glow: "#f0cf9a", soft: "#f7e9d2", badge: "#8a5a1f" },
+  "Детское меню":         { from: "#9fd36e", to: "#5f9f26", glow: "#d7ef9a", soft: "#eff7da", badge: "#5f9f26" },
+  "Супы":                 { from: "#ff8a5c", to: "#d94f2e", glow: "#ffd0b8", soft: "#fff0e8", badge: "#d94f2e" },
+  "Закуски и салаты":     { from: "#9dbf4e", to: "#5f8a26", glow: "#d7ef9a", soft: "#eff7da", badge: "#5f8a26" },
+  "Паста":                { from: "#e3a93f", to: "#a06a1f", glow: "#f5d99a", soft: "#fbf0d2", badge: "#a06a1f" },
+  "Десерты":              { from: "#f0a3b8", to: "#d0638a", glow: "#ffd5e0", soft: "#fdeef2", badge: "#c25578" },
+  "Топпинги к блинам":    { from: "#f5c06e", to: "#c97f2e", glow: "#ffe3b3", soft: "#fff1dc", badge: "#c97f2e" },
+  "Кофе":                 { from: "#a9846e", to: "#6e4f3a", glow: "#e6d3c2", soft: "#f4ebe2", badge: "#6e4f3a" },
+  "Чай · классика":       { from: "#a3c46e", to: "#6f9f2e", glow: "#d7ef9a", soft: "#eff7da", badge: "#6f9f2e" },
+  "Чай · премиум":        { from: "#7fa0c4", to: "#3f5f8f", glow: "#d2e0f0", soft: "#eaf2fa", badge: "#3f5f8f" },
+  "Чай · авторский":      { from: "#c47fa0", to: "#8f3f6f", glow: "#f0d2e0", soft: "#faeaf2", badge: "#8f3f6f" },
+  "Прохладительные напитки": { from: "#7fb7c9", to: "#3f7fa0", glow: "#d2eef6", soft: "#eaf6fa", badge: "#2f6f92" },
+  "Безалкогольные коктейли": { from: "#e07fc9", to: "#a03f8f", glow: "#f5d2ea", soft: "#faeaf5", badge: "#a03f8f" },
+  "Пиво":                 { from: "#ddb34e", to: "#a07f1f", glow: "#f0d99a", soft: "#fbf0d2", badge: "#a07f1f" }
 };
 
-const palettes = cat => CAT_PALETTES[cat] || CAT_PALETTES[CATEGORIES[0]];
+const palettes = cat => CAT_PALETTES[cat] || { from: "#a0a0a0", to: "#606060", glow: "#e2e2e2", soft: "#f2f2f2", badge: "#606060" };
 
 // Фото блюда: сначала цветная SVG-иллюстрация, при наличии реального .jpg — она подставится
 function dishSrc(item) {
@@ -173,16 +182,18 @@ function menuCard(item) {
   return `
   <article class="menu-card" data-reveal style="--cat-from:${p.from};--cat-to:${p.to};--cat-soft:${p.soft};--cat-badge:${p.badge}">
     <div class="menu-card__media">
-      <img src="${dishSrc(item)}" data-slug="${item.img || ""}" alt="${item.name}" loading="lazy">
+      ${item.img
+        ? `<img src="${dishSrc(item)}" data-slug="${item.img}" alt="${item.name}" loading="lazy">`
+        : `<span class="menu-card__emoji" style="--cat-from:${p.from};--cat-to:${p.to}">${item.icon || "🍽️"}</span>`}
       ${item.badge ? `<span class="menu-card__badge">${item.badge}</span>` : ""}
       ${item.tag ? `<span class="menu-card__tag">${item.tag}</span>` : ""}
     </div>
     <div class="menu-card__body">
       <div class="menu-card__head">
-        <h3 class="menu-card__name">${item.name}</h3>
-        <span class="menu-card__price">${fmt(item.price)}</span>
+        <h3 class="menu-card__name">${item.name}${item.variant ? ` <small class="menu-card__variant">${item.variant}</small>` : ""}</h3>
+        <span class="menu-card__price">${fmt(item.price)}${item.price2 ? ` / ${fmt(item.price2)}` : ""}</span>
       </div>
-      <p class="menu-card__desc">${item.desc}</p>
+      <p class="menu-card__desc">${item.desc || item.tag || ""}</p>
     </div>
   </article>`;
 }
