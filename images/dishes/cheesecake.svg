@@ -24,5 +24,5 @@
     <circle cx="300" cy="296" r="4" fill="#8a2f1c"/>
     <circle cx="330" cy="304" r="4" fill="#8a2f1c"/>
     <circle cx="344" cy="294" r="3.5" fill="#8a2f1c"/>
-    <text x="320" y="420" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="26" fill="#fff" opacity="0.85">чизкейк «Уют»</text>
+    <text x="320" y="420" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="26" fill="#fff" opacity="0.85">чизкейк «Свои»</text>
 </svg>

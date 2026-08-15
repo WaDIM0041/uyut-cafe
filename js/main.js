@@ -87,19 +87,6 @@ window.addEventListener("scroll", () => {
   $("#read-progress").style.transform = `scaleX(${pct})`;
 }, { passive: true });
 
-const burger = $("#burger");
-const navMenu = $("#nav-menu");
-burger.addEventListener("click", () => {
-  burger.classList.toggle("is-open");
-  navMenu.classList.toggle("is-open");
-  document.body.classList.toggle("no-scroll", navMenu.classList.contains("is-open"));
-});
-$$(".nav__link, .nav__cta").forEach(el => el.addEventListener("click", () => {
-  burger.classList.remove("is-open");
-  navMenu.classList.remove("is-open");
-  document.body.classList.remove("no-scroll");
-}));
-
 // ============================================================
 // ПЛАВНЫЙ СКРОЛЛ ПО ЯКОРЯМ
 // ============================================================

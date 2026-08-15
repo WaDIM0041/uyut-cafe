@@ -1,5 +1,5 @@
 /* ============================================================
-   УЮТ — домашнее кафе с комплексными обедами
+   Кафе «СВОИ» — домашнее кафе с комплексными обедами
    Тёплый уют · современные эффекты · адаптив
    ============================================================ */
 
@@ -48,7 +48,7 @@ body {
 }
 
 /* Фоновые эффекты сайта: тёплые световые пятна + зерновая текстура
-   Вдохновлено annakam.ru (cyan-grid / scanline), но в палитре УЮТа (мед/уголь) */
+   Вдохновлено annakam.ru (cyan-grid / scanline), но в палитре «СВОИ» (мед/уголь) */
 body::before {
   content: "";
   position: fixed;
@@ -206,13 +206,6 @@ h1, h2, h3, h4 { font-family: var(--font-disp); font-weight: 700; line-height: 1
 .btn--sm { padding: 11px 22px; font-size: 0.92rem; }
 .btn__arrow { transition: transform 0.3s var(--ease); }
 .btn:hover .btn__arrow { transform: translateX(5px); }
-
-/* Бургер */
-.burger { display: none; flex-direction: column; gap: 5px; padding: 10px; z-index: 70; }
-.burger span { width: 26px; height: 2.5px; background: var(--text-light); border-radius: 2px; transition: 0.35s var(--ease); }
-.burger.is-open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
-.burger.is-open span:nth-child(2) { opacity: 0; }
-.burger.is-open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
 /* ============================================================
    HERO
@@ -1218,18 +1211,10 @@ h1, h2, h3, h4 { font-family: var(--font-disp); font-weight: 700; line-height: 1
 }
 
 @media (max-width: 860px) {
-  .nav {
-    position: fixed; inset: 0; z-index: 65;
-    flex-direction: column; justify-content: center; gap: 14px;
-    background: rgba(13, 24, 19, 0.96);
-    backdrop-filter: blur(20px);
-    opacity: 0; visibility: hidden;
-    transition: 0.4s var(--ease);
-  }
-  .nav.is-open { opacity: 1; visibility: visible; }
-  .nav__link { font-size: 1.3rem; padding: 12px 20px; }
-  .nav__social { margin: 12px 0 0; }
-  .burger { display: flex; margin-left: auto; }
+  .nav { display: none; }
+  .footer__inner { flex-direction: column; align-items: flex-start; gap: 22px; }
+  .footer__nav { width: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 22px; }
+  .footer__nav a { font-size: 1.02rem; font-weight: 600; padding: 6px 10px; }
   .steps { grid-template-columns: 1fr; }
   .hero__arrow { display: none; }
   .field-row { grid-template-columns: 1fr; }
