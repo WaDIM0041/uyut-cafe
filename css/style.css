@@ -35,7 +35,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; overflow-x: clip; }
 
 body {
   font-family: var(--font-body);
@@ -448,7 +448,7 @@ h1, h2, h3, h4 { font-family: var(--font-disp); font-weight: 700; line-height: 1
 /* ============================================================
    СЕКЦИИ-ОБЩЕЕ
    ============================================================ */
-.section { position: relative; padding: clamp(80px, 10vw, 130px) 0; }
+.section { position: relative; padding: clamp(80px, 10vw, 130px) 0; overflow: hidden; }
 .container { max-width: 1280px; margin: 0 auto; padding: 0 clamp(18px, 4vw, 60px); }
 
 /* Тематические фоны секций — основа светло-салатовый, остальные разбавлены */
@@ -1237,6 +1237,7 @@ h1, h2, h3, h4 { font-family: var(--font-disp); font-weight: 700; line-height: 1
 }
 
 @media (max-width: 520px) {
+  .marquee { transform: none; }
   .hero__content { padding-top: 130px; }
   .stats { grid-template-columns: 1fr 1fr; gap: 12px; }
   .toast-box { left: 16px; right: 16px; }
